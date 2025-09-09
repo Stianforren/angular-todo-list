@@ -11,6 +11,7 @@ export class TodoListComponent {
   constructor(private readonly todoService: TodoService) {}
 
   todos = this.todoService.todos;
+  displays = false;
 
   updateTodo(todo: Todo) {
     this.todoService.updateTodo(todo).subscribe({
@@ -30,5 +31,10 @@ export class TodoListComponent {
       }
     });
     this.todos = this.todoService.todos;
+  }
+
+  changeShow(): void {
+    this.displays = !this.displays;
+    console.log(this.displays)
   }
 }
