@@ -1,5 +1,6 @@
 <app-todo-create (newTodo)="newTodo($event)"></app-todo-create>
 <button (click)="changeShow()">change view</button>
+<span>displays task that are completed? {{displays}}</span>
 <ng-container *ngFor="let todo of todos | async">
   <app-todo-item
     *ngIf="todo.completed === displays"
