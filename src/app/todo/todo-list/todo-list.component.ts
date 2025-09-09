@@ -13,11 +13,22 @@ export class TodoListComponent {
   todos = this.todoService.todos;
 
   updateTodo(todo: Todo) {
+    this.todoService.updateTodo(todo).subscribe({
+      next: (response) => {
+        console.log('updated', response);
+      }
+    })
     this.todoService.updateTodo(todo);
   }
 
   async newTodo(title: string) {
-    await this.todoService.addTodo(title);
+    await this.todoService.addTodo(title).subscribe({
+      next: (response) => {
+        console.log('added:', response);
+        this.todoService.refreshTodos();
+        this.todos = this.todoService.todos
+      }
+    });
     this.todos = this.todoService.todos;
   }
 }
