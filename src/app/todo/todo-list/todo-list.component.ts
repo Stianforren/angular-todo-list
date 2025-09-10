@@ -19,7 +19,6 @@ export class TodoListComponent {
         console.log('updated', response);
       }
     })
-    this.todoService.updateTodo(todo);
   }
 
   async newTodo(title: string) {
